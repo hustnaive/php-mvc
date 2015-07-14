@@ -31,8 +31,8 @@ php-mvc是什么？
 
 * 0.2 修改目录结构为
 
-php-mvc/
-	|- taglogs/	每个版本的实验记录
-	|- websrc/	所有源代码目录
-	|- README.md 本说明文档
+	php-mvc/
+		|- taglogs/	每个版本的实验记录
+		|- websrc/	所有源代码目录
+		|- README.md 本说明文档
 	
