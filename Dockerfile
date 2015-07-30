@@ -7,3 +7,4 @@ RUN docker-php-ext-install pdo_mysql
 
 # /var/www/html/ 为 Apache 目录
 COPY websrc /var/www/html/
+EXPOSE 80
