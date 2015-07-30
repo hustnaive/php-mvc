@@ -6,5 +6,7 @@ FROM daocloud.io/php:5.6-apache
 RUN docker-php-ext-install pdo_mysql
 
 # /var/www/html/ 为 Apache 目录
-COPY websrc /var/www/html/
+COPY websrc/core /var/www/core
+COPY websrc/src /var/www/src
+COPY websrc/web /var/www/html
 EXPOSE 80

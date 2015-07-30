@@ -7,9 +7,7 @@ spl_autoload_register(function($clsname){
 	if($clspath[0] === 'web') {
 		$clspath[0] = 'src';
 	}
-	require_once implode(DIRECTORY_SEPARATOR,$clspath).'.php';
+	require_once dirname(__DIR__).DIRECTORY_SEPARATOR.implode(DIRECTORY_SEPARATOR,$clspath).'.php';
 });
-
-(new web\A())->run();
 
 (new web\a\b())->run();
