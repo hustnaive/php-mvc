@@ -34,6 +34,13 @@ php-mvc是什么？
 
 对于每个阶段的内容，我会打一个tag，如果你是将项目整个clone到本地，那么你就可以`git checkout tagname`实际的到每个阶段的节点去查看当时的完整代码。
 
+如果你跟我一样在研究docker，你也可以基于docker开始，参考`Docker开始`。
+
+Docker开始
+---
+
+
+
 目录结构
 ---
 
@@ -42,6 +49,7 @@ php-mvc是什么？
 		|- taglogs/	每个版本的实验记录，说明，以tagname-xxx命名
 		|- websrc/	所有源代码目录
 		|- README.md 本说明文档
+		|- Dockerfile 自动构建脚本
 ```
 
 修改日志
