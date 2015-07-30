@@ -39,18 +39,31 @@ php-mvc是什么？
 Docker开始
 ---
 
+* 执行`git clone git@github.com:hustnaive/php-mvc.git`，将代码库clone到本地
+* 执行`cd path/to/php-mvc`进入到代码目录
+* 执行`docker build -t imgname .`生成docker镜像
+* 执行`docker run -d --name aliasname -p 8080:80 imgname`运行容器
+* 浏览器访问`http://boot2docker-ip:8080`访问站点
+
+如果你希望实时的在容器中看到你的修改而不必重新构建的话，你可以将第四步执行如下命令：
+
+	docker run -d --name aliasname -p 8080:80 -v path/to/php-mvc/websrc/core:/var/www/core -v path/to/php-mvc/websrc/src:/var/www/src -v path/to/php-mvc/websrc/web:/var/www/html
+
 
 
 目录结构
 ---
 
-```
 	php-mvc/
 		|- taglogs/	每个版本的实验记录，说明，以tagname-xxx命名
 		|- websrc/	所有源代码目录
+			|-- core/ 核心框架代码
+			|-- src/ 站点源代码目录
+			|-- web/ 站点webroot目录
+				|-- index.php 站点启动脚本（注意apache需要启动mode_rewrite）
 		|- README.md 本说明文档
 		|- Dockerfile 自动构建脚本
-```
+
 
 修改日志
 ---
