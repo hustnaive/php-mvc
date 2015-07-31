@@ -1,5 +1,4 @@
 <?php
-
 namespace web\a;
 
 class B {
