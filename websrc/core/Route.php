@@ -5,13 +5,23 @@ class Route {
     
     static $_routes;
     
-    static function add($route,$callable) {
-        if(is_callable($callable)) {
-            self::$_routes[$route] = $callable;
-        }
-        else throw new \Exception('arg 2 must be an callable');
+    /**
+     * 将一个callable作为路由处理方法添加到路由表中，后添加的会覆盖新添加的。
+     * @param string $route
+     * @param callable $callable
+     */
+    static function add($route,callable $callable) {
+        self::$_routes[$route] = $callable;
     }
     
+    /**
+     * 运行一个路由处理方法，首先查路由表，如果路由表中已经注册了一个处理方法，调用该处理方法。
+     * 如果没有注册处理方法，则在web\ctrls命名空间下寻找相应的controller
+     * 
+     * @param string $route
+     * @param array $params
+     * @return mixed
+     */
     static function run($route,$params=[]) {
         if(isset(self::$_routes[$route])) {
             $callable = self::$_routes[$route];
