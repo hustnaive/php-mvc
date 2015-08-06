@@ -3,7 +3,7 @@ namespace web\ctrls;
 
 use core\Controller;
 
-class Index extends Controller {
+class IndexController extends Controller {
     
     public function index($param) {
         echo 'index';

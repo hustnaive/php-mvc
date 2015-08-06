@@ -7,7 +7,10 @@ namespace core;
  * 用法：
  * 
  * //运行某路由
- * Route::run('/',$_POST);
+ * Route::run('/path/to/controller/action',$_POST);
+ * 
+ * //默认action的名称为index，如下将会实际运行controller/index方法
+ * Route::run('/controller',$_POST); 
  * 
  * //自定义处理回调（会覆盖默认路由处理方式）
  * Route::add('/',function($params) { print_r($params); });
@@ -31,7 +34,8 @@ class Route {
     
     /**
      * 运行一个路由处理方法，首先查路由表，如果路由表中已经注册了一个处理方法，调用该处理方法。
-     * 如果没有注册处理方法，则在web\ctrls命名空间下寻找相应的controller
+     * 如果没有注册处理方法，则在web\ctrls命名空间下寻找相应的controller。
+     * 控制器名为请求路由倒数第一个/和第二个/之间的部分加上固定字符串Controller。
      * 
      * @param string $route
      * @param array $params
@@ -43,7 +47,7 @@ class Route {
             return call_user_func_array($callable, [$params]);
         }
         else {
-            $route = trim($route,'\\/');
+            $route = ltrim($route,'\\/');
             $routes = explode('/', $route);
             $routes = array_filter($routes);
             
@@ -54,15 +58,15 @@ class Route {
             if(count($routes) >= 2) {
                 $action = $routes[count($routes)-1];
                 $routes = array_slice($routes, 0, count($routes)-1);
-                $routes[count($routes)-1] = ucfirst($routes[count($routes)-1]);
+                $routes[count($routes)-1] = ucfirst($routes[count($routes)-1]).'Controller';
             }
             else if( count($routes) == 1) {
                 //如果只传控制器名，调用默认处理方法
-                $routes[0] = ucfirst($routes[0]);
+                $routes[0] = ucfirst($routes[0]).'Controller';
             }
             else {
                 //默认的控制器为Index，处理方法为index
-                $routes = ['Index'];
+                $routes = ['IndexController'];
             }
             
             $cls = 'web\\ctrls\\'.implode('\\',$routes);

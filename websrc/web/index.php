@@ -14,3 +14,5 @@ Route::run('index/index',['a'=>1]);
 Route::run('index/index/index',['a'=>1]);
 
 Route::run('/',['a'=>1]);
+
+print_r($_SERVER);
