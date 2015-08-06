@@ -1,6 +1,21 @@
 <?php
 namespace core;
 
+/**
+ * 路由处理类
+ * 
+ * 用法：
+ * 
+ * //运行某路由
+ * Route::run('/',$_POST);
+ * 
+ * //自定义处理回调（会覆盖默认路由处理方式）
+ * Route::add('/',function($params) { print_r($params); });
+ * Route::run('/',$_POST);
+ * 
+ * @author fangl
+ *
+ */
 class Route {
     
     static $_routes;
