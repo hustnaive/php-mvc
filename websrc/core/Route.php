@@ -15,7 +15,7 @@ class Route {
     static function run($route,$params=[]) {
         if(isset(self::$_routes[$route])) {
             $callable = self::$_routes[$route];
-            return call_user_func_array($callable, $params);
+            return call_user_func_array($callable, [$params]);
         }
         else {
             $route = trim($route,'\\/');

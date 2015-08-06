@@ -4,9 +4,8 @@ use core\Route;
 
 require dirname(__DIR__).'/core/Autoloader.php';
 
-Route::add('/index', function($params) {
+Route::add('index', function($params) {
     print_r($params);
-    echo 'callable';
 });
 
-Route::run('index',['a']);
+Route::run('index',['a'=>1]);
