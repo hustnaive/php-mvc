@@ -49,14 +49,16 @@ class Route {
         else {
             $route = ltrim($route,'\\/');
             $routes = explode('/', $route);
-            $routes = array_filter($routes);
+            
+            //不过滤最后一个/
+            //$routes = array_filter($routes);
             
             //默认controller的处理方法为index方法
             $action = 'index';
             
             //如果路由的层级大于2，则最后一个/后面的为请求的方法名，倒数第二个为controller名，文件名同控制器名，首字母大写
             if(count($routes) >= 2) {
-                $action = $routes[count($routes)-1];
+                $action = empty($routes[count($routes)-1])?$action:$routes[count($routes)-1];
                 $routes = array_slice($routes, 0, count($routes)-1);
                 $routes[count($routes)-1] = ucfirst($routes[count($routes)-1]).'Controller';
             }
