@@ -1,16 +1,12 @@
 <?php
-
 error_reporting(E_ALL);
+use core\Route;
 
-spl_autoload_register(function($clsname){
-	$clspath = explode('\\',$clsname);
-	if($clspath[0] === 'web') {
-		$clspath[0] = 'src';
-	}
-	require dirname(__DIR__).DIRECTORY_SEPARATOR.implode(DIRECTORY_SEPARATOR,$clspath).'.php';
+require dirname(__DIR__).'/core/Autoloader.php';
+
+Route::add('/index', function($params) {
+    print_r($params);
+    echo 'callable';
 });
 
-
-(new web\a\b())->run();
-
-(new web\A())->run();
+Route::run('index',['a']);
