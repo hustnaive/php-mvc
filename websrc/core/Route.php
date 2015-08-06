@@ -16,6 +16,13 @@ namespace core;
  * Route::add('/',function($params) { print_r($params); });
  * Route::run('/',$_POST);
  * 
+ * //默认运行的控制器名为路由倒数第一个/和倒数第二个/之间的部分加上固定字符串Controller。控制器名之前的部分为路径，之后的部分为方法名。具体如下：
+ * Route::run('index',['a'=>1]); // indexController::index
+ * Route::run('index/',['a'=>1]); // indexController::index
+ * Route::run('index/index',['a'=>1]); // indexController::index
+ * Route::run('index/index/',['a'=>1]); // index/indexController::index
+ * Route::run('index/index/index',['a'=>1]) // index/indexController::index
+ * 
  * @author fangl
  *
  */
