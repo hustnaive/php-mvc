@@ -1,26 +1,17 @@
 <?php
 namespace core;
 
-//应用根目录
-define('APP_ROOT', dirname(__DIR__));
-
-//框架代码根目录
-define('CORE_ROOT', APP_ROOT.DIRECTORY_SEPARATOR.'core');
-
-//web跟目录
-define('WEB_ROOT', APP_ROOT.DIRECTORY_SEPARATOR.'web');
-
 /**
  * 自动加载器，遵循psr-4规范
  * @author fangl
  *
  */
 class Autoloader {
-    
+
     static $_namespaces = [
         'web' => 'src',
     ];
-    
+
     /**
      * 增加命名空间到路径的映射（以帮助自动加载器能够找到对应的路径）
      * 注意对应的代码里面的命名空间要和声明一致，否则即使文件正确引入，也会报找不到类文件错误
@@ -54,6 +45,3 @@ class Autoloader {
 
 //注册自动加载
 spl_autoload_register(__NAMESPACE__.'\Autoloader::autoload');
-
-
-
