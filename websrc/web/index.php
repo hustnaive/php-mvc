@@ -13,14 +13,12 @@ define('WEB_ROOT', APP_ROOT.DIRECTORY_SEPARATOR.'web');
 
 require dirname(__DIR__).'/core/Autoloader.php';
 
-Route::add('/',function($params) {
-    print_r($params);
-});
+//获取路由
+$route = isset($_SERVER['PATH_INFO'])?$_SERVER['PATH_INFO']:'/';
 
-Route::run('index',['a'=>1]);
-Route::run('index/',['a'=>1]);
-Route::run('index/index',['a'=>1]);
-Route::run('index/index/',['a'=>1]);
-Route::run('index/index/index',['a'=>1]);
-
-Route::run('/',['a'=>1]);
+try {
+  Route::run($route,$_REQUEST);
+}
+catch(Exception $e) {
+  
+}
