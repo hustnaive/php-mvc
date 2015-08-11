@@ -5,11 +5,11 @@ use core\Controller;
 
 class IndexController extends Controller {
 
-    public function index($param) {
-        echo get_class($this);
+    public function index($params) {
+        echo $this->_render('index',$params);
     }
 
-    public function b($param) {
-        print_r($param);
+    public function b($params) {
+        print_r($params);
     }
 }

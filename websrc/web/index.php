@@ -20,5 +20,5 @@ try {
   Route::run($route,$_REQUEST);
 }
 catch(Exception $e) {
-  
+  throw $e;
 }
